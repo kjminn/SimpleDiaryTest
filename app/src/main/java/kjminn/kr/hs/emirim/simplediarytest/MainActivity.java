@@ -64,21 +64,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             fIn=openFileInput(fileName);
             byte[] buf=new byte[500];
-            fIn.read(buf);
+            fIn.read(buf);                  //수정
             diaryStr=new String(buf).trim();
             but.setText("수정 하기");
+            fIn.close();
         } catch (FileNotFoundException e) {
-            edit.setText("일기가 존재하지 않습니다.");
+            edit.setHint("일기가 존재하지 않습니다."); //수정
             but.setText("새로 저장");
         } catch (IOException e) {
 
-        }
-
-
-        try {
-            fIn.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return  diaryStr;
